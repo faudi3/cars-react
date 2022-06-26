@@ -7,7 +7,7 @@ const Header = () => {
         <img width={50} height={50} src="/img/logo.svg" alt="лого" />
         <h2 className="header__title">Cars on react</h2>
       </div>
-      <input placeholder="Поиск" className="header__search"/> 
+     
       <div className="header__drawer">
         <p> 395 rub</p>
         <div className="header__drawer-btn">

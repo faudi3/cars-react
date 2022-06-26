@@ -6,7 +6,7 @@ body {
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(4,61,73,1) 75%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#043d49",GradientType=1);
   height:100vh;
-  font-family: 'Inter';
+  font-family: 'Nunito';
 }
 
 h1,h2,h3,h4,h5,p {
@@ -60,14 +60,17 @@ h1,h2,h3,h4,h5,p {
   .header__amount {
     margin-left: 5px;
   }
-  .header__search {
+  
+}
+
+.search {
     border: none;
     height: 35px;
     min-width: 400px;
     font-family: 'Inter';
     border-radius: 25px;
     font-size: 18px;
-  }
+    margin: 10px 20px ;
 }
 
 .App {

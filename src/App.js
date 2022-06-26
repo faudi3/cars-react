@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import Card from "./components/Card";
 function App() {
+  const [searchValue, setSearchValue] = React.useState('');
 
   const items = [
     {"name": "ux", "price": "3 286 000", "imgUrl": "./img/ux.png", "id": 1},
@@ -10,6 +11,11 @@ function App() {
     {"name": "lc", "price": "12 113 000", "imgUrl": "./img/lc.png", "id": 4},
     {"name": "es", "price": "4 314 000", "imgUrl": "./img/es.png", "id": 5},
   ]
+
+  const onChangeInput = (event) => {
+    setSearchValue(event.target.value);
+  }
+
   return (
     <div className="App">
       <Header />
@@ -28,8 +34,9 @@ function App() {
         </div>
       </div>
       <h2 className="content__title">Все модели</h2>
+      <input onChange={onChangeInput} placeholder="Поиск" className="search" value={searchValue}/> 
       <div className="content__list">
-        {items.map((obj) => (
+        {items.filter((obj) => obj.name.includes(searchValue)).map((obj) => (
           <Card title={obj.name}
                 key={obj.key}
                 price={obj.price}
