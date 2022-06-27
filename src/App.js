@@ -6,14 +6,19 @@ import Sort from './components/Sort';
 
 function App() {
   const [searchValue, setSearchValue] = React.useState('');
- 
-  const items = [
-    {"name": "ux", "price": "3 286 000", "imgUrl": "./img/ux.png", "id": 1, "category" : 3},
-    {"name": "rx", "price": "5 348 000", "imgUrl": "./img/rx.png", "id": 2, "category" : 3},
-    {"name": "ls", "price": "9 682 000", "imgUrl": "./img/ls.png", "id": 3, "category" : 1},
-    {"name": "lc", "price": "12 113 000", "imgUrl": "./img/lc.png","id": 4, "category" : 2},
-    {"name": "es", "price": "4 314 000", "imgUrl": "./img/es.png", "id": 5, "category" : 1},
-  ]
+  const [items,setItems] = React.useState([]);
+
+
+  React.useEffect(() => {
+    fetch('https://62ba16ceff109cd1dca0af87.mockapi.io/items').then(res => {
+    return res.json();
+    })
+    .then((json) => {
+      setItems(json);
+     });
+    }, []);
+
+  
 
   const onChangeInput = (event) => {
     setSearchValue(event.target.value);
