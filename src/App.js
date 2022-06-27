@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './components/Header';
 import Card from "./components/Card";
 import Categories from './components/Categories';
+import Sort from './components/Sort';
+
 function App() {
   const [searchValue, setSearchValue] = React.useState('');
  
@@ -20,22 +22,20 @@ function App() {
   return (
     <div className="App">
       <Header  />
-      <Categories />
-      {/* <div className="header__switch">
+      <div className="categAndSort">
+       <Categories />
+        {/* <div className="header__switch">
           <div  id="header__switch-circle"></div>
          </div> */}
+        <Sort />
+      </div>
       <h2 className="content__title">Все модели</h2>
       <input onChange={onChangeInput} placeholder="Поиск" className="search" value={searchValue} type="text"/> 
       <div className="content__list">
         {items.filter((obj) => obj.name.includes(searchValue)).map((obj) => (
-          <Card title={obj.name}
-                key={obj.id}
-                price={obj.price}
-                imgUrl={obj.imgUrl}
-          />
+          <Card {...obj} key={obj.id} />
         ))}
       </div>
-     
     </div>
   );
 }

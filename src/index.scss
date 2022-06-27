@@ -16,6 +16,9 @@ h1,h2,h3,h4,h5,p {
 input {
   font-family: "Nunito";
 }
+li {
+  list-style-type: none;
+}
 
 .header {
   color: rgb(0, 0, 0);
@@ -200,4 +203,54 @@ input {
   box-shadow: 10px 14px 30px rgba(96, 248, 36, 0.5);
   transform: translateY(-5px);
   cursor: pointer;
+}
+
+.sort {
+  color: white;
+  position: relative;
+  margin-top: 20px;
+  font-weight: 800;
+  font-size: 25px;
+  margin-right: 20px;
+  cursor: pointer;
+  text-align: center;
+  .sort_par {
+    display: flex;
+    .inner__par {
+      margin: 0 5px;
+    }
+  }
+  .sort__active {
+    background-color: rgb(190, 249, 190);
+    border-radius: 20px;
+    color: rgb(172, 61, 236);
+  }
+  .sort__popup {
+    background-color: rgb(245, 202, 255);
+    color:black;
+    font-weight: 800;
+    font-size: 18px;
+    width: 200px;
+    margin-top: 20px;
+    position: absolute;
+   border-radius: 20px;
+   box-shadow: 4px 4px 10px rgb(149, 4, 135);
+   
+  }
+  .sort__popup-hidden {
+    display: none;
+  }
+  
+
+}
+
+.categAndSort {
+  display: flex;
+  justify-content: space-between;
+}
+.option {
+  border-radius: 20px;
+}
+.option:hover {
+  background-color: rgb(190, 249, 190);
 }
