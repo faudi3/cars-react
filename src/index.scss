@@ -19,6 +19,9 @@ input {
 li {
   list-style-type: none;
 }
+a {
+  text-decoration: none;
+}
 
 .header {
   color: rgb(0, 0, 0);
@@ -119,6 +122,7 @@ li {
 .searchList {
   display: flex;
   margin: 20px 10px 0px;
+  flex-wrap: wrap;
   .searchList__item {
     width:120px;
     height:50px;
@@ -148,9 +152,10 @@ li {
   color: white
 }
 .content__list {
-  display: flex;
+  display: grid;
   margin: 20px 20px 0;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 10px;
 }
 
 .card {
@@ -158,8 +163,7 @@ li {
   border-radius: 25px;
   display: flex;
   flex-direction: column;
-  margin-right: 10px;
-  margin-bottom: 10px;
+ 
   align-items: center;
   transition: box-shadow 0.2s ease-in-out,transform 0.2s ease-in-out;
   min-width: 350px;
@@ -253,4 +257,91 @@ li {
 }
 .option:hover {
   background-color: rgb(190, 249, 190);
+}
+
+.basket {
+  color:white;
+  display:flex;
+  width: 80%;
+  border: 1px solid red;
+  margin: 20px auto;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    color:grey;
+    font-size: 18px;
+  }
+}
+
+.wrapper-cart {
+  width:80%;
+  border:1px solid red;
+  margin:0 auto;
+  color:white;
+  .basket__img {
+    border:1px solid rgb(235, 159, 254);
+    margin-left: 5px;
+   border-radius: 20px;
+  }
+  .basket__item {
+    display: flex;
+  }
+  .back {
+      width: 150px;
+      height: 50px;
+      background: rgb(197, 190, 233);
+      border-radius: 25px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      box-shadow: 5px 5px 1px rgb(157, 140, 242);
+      transition: ease-in-out 0.2s;
+      margin-bottom: 15px;
+      margin-top: 10px;
+      font-weight: 900;
+      margin-left: 5px;
+  }
+    .back:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+  .cart__result {
+    display: flex;
+    border: 1px solid red;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px 5px;
+  }
+  .adding {
+    display: flex;
+    margin: 20px 10px;
+  }
+  .remove_basket {
+    margin-left: 20px;
+  }
+  .minus , .plus {
+    background-color: rgb(241, 135, 255);
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 24px;
+    line-height:20px;
+}
+.basket__text {
+  margin-left: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+}
+.notFound {
+  color:white;
 }
