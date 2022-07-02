@@ -9,9 +9,21 @@ const Home = () => {
   const [searchValue, setSearchValue] = React.useState('');
   const [items,setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [categoryId, setCategoryId] = React.useState(0);
+  const [sortType, setSortType] = React.useState({
+    name: 'алфавиту',
+    sorting: 'name',
+  });
+
+  console.log(categoryId,sortType)
 
   React.useEffect(() => {
-    fetch('https://62ba16ceff109cd1dca0af87.mockapi.io/items').then(res => {
+    setIsLoading(true);
+    fetch(`https://62ba16ceff109cd1dca0af87.mockapi.io/items?${ 
+      categoryId > 0 ? `category=${categoryId}` : ''
+    }&sortBy=${sortType.sorting}&order=asc`
+    )
+    .then((res) => {
     return res.json();
     })
     .then((json) => {
@@ -21,7 +33,7 @@ const Home = () => {
       }, 1000);
      });
      window.scrollTo(0,0);
-    }, []);
+    }, [categoryId,sortType]);
 
     const onChangeInput = (event) => {
       setSearchValue(event.target.value);
@@ -30,11 +42,14 @@ const Home = () => {
   return (
     <div>
        <div className="categAndSort">
-       <Categories />
+       <Categories value={categoryId} 
+                   onClickCategory={(id) => setCategoryId(id)}
+       />
         {/* <div className="header__switch">
           <div  id="header__switch-circle"></div>
          </div> */}
-        <Sort />
+        <Sort value={sortType} 
+              onChangeSort={(id) => setSortType(id)} />
       </div>
       <h2 className="content__title">Все модели</h2>
       <input onChange={onChangeInput} placeholder="Поиск" className="search" value={searchValue} type="text"/> 

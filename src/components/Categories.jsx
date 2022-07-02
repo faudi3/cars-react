@@ -1,7 +1,8 @@
 import React from 'react';
 
-const Categories = () => {
-  const [activeIndex, setActiveIndex] = React.useState(0);
+const Categories = ({ value, onClickCategory}) => {
+  
+
   const categories = ['Все', 'Седаны', 'Купе','Гибрид']
   
  
@@ -11,8 +12,8 @@ const Categories = () => {
           categories.map((obj, index) => (
             <div 
             key={categories.indexOf(obj)}
-            onClick={() => setActiveIndex(index)} 
-            className={activeIndex == categories.indexOf(obj) ? "searchList__item active" : "searchList__item"}>
+            onClick={() => onClickCategory(index)} 
+            className={value == categories.indexOf(obj) ? "searchList__item active" : "searchList__item"}>
               <p>{obj}</p>
             </div>
           ))
