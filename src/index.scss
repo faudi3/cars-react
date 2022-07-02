@@ -105,9 +105,23 @@ a {
     height: 35px;
     min-width: 400px;
    
+   
     border-radius: 25px;
     font-size: 18px;
     margin: 10px 20px ;
+    
+}
+
+.search__cont {
+  position: relative;
+  
+  max-width: 450px;
+}
+
+.search__close {
+  position: absolute;
+  right: 50px;
+  top:18px;
 }
 
 .App {

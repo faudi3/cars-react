@@ -52,11 +52,29 @@ const Home = () => {
               onChangeSort={(id) => setSortType(id)} />
       </div>
       <h2 className="content__title">Все модели</h2>
-      <input onChange={onChangeInput} placeholder="Поиск" className="search" value={searchValue} type="text"/> 
+      <div className="search__cont">
+      <input 
+        onChange={onChangeInput} 
+        placeholder="Поиск" 
+        className="search" 
+        value={searchValue} 
+        type="text"
+        
+        /> 
+        {
+        searchValue &&
+        <img className="search__close" src="./img/close.svg" 
+        width={20} 
+        height={20}
+        onClick={() => setSearchValue('')}
+         /> 
+         }
+        </div>
       <div className="content__list">
         {
           isLoading ? [...new Array(5)].map((_, index) => <Skeleton key={index} />)
-          : items.filter((obj) =>obj.name.includes(searchValue)).map((obj) => <Card key={obj.id} {...obj} />)
+          : items.filter((obj) =>obj.name.includes(searchValue) || obj.name.toLocaleUpperCase().includes(searchValue)).map((obj) => <Card key={obj.id} {...obj} />)
+          // привод к нижнему регистру и имени и includes, если элеметы могут быть и с большой буквы и с мал
         }
       </div>
     </div>
