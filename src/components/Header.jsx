@@ -8,7 +8,7 @@ const Header = () => {
     <div className="header">
       <Link to="/">
       <div className="header__left-side">
-        <img width={50} height={50} src="/img/logo.svg" alt="лого" />
+        <img width={50} height={50} src="./img/logo.svg" alt="лого" />
         <h2 className="header__title">Cars on react</h2>
       </div>
       </Link>

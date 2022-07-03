@@ -170,6 +170,7 @@ a {
   margin: 20px 20px 0;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 10px;
+ 
 }
 
 .card {
@@ -177,7 +178,7 @@ a {
   border-radius: 25px;
   display: flex;
   flex-direction: column;
- 
+  margin-bottom: 20px;
   align-items: center;
   transition: box-shadow 0.2s ease-in-out,transform 0.2s ease-in-out;
   min-width: 350px;

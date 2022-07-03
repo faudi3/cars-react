@@ -11,8 +11,6 @@ import NotFound from './pages/NotFound';
 import Cart from './pages/Cart';
 
 function App() {
-
-
   return (
     <div className="App">
       <Header  />
@@ -21,9 +19,6 @@ function App() {
         <Route path="/cart" element={<Cart />}/>
         <Route path="*" element={<NotFound />}/>
       </Routes>
-      
-       
-      
     </div>
   );
 }

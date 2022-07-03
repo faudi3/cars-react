@@ -10,7 +10,7 @@ const Cart = () => {
       </div>
       <div className='basket__items'>
         <div className="basket__item">
-          <img width={300} src="/img/es.png" 
+          <img width={300} src="./img/es.png" 
           alt="first" className="basket__img"/>
           <div>
             <div className="basket__text">

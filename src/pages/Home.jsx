@@ -7,15 +7,22 @@ import Skeleton from '../components/Skeleton';
 //redux
 import { useSelector , useDispatch} from 'react-redux';
 import { setCategoryId } from '../redux/slices/filter';
+//axios
+import axios from "axios";
 
 const Home = () => {
   const dispatch = useDispatch();
   const categoryId = useSelector((state) => state.filter.categoryId);
   const sortType = useSelector((state) => state.filter.sort.sorting);
-
+  const inputRef = React.useRef();
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
   };
+
+  const onClickClear = () => {
+    setSearchValue('');
+    inputRef.current.focus();
+  }
 
 
 
@@ -29,23 +36,33 @@ const Home = () => {
   // });
 
  
+  // React.useEffect(() => {
+  //   setIsLoading(true);
+  //   fetch(`https://62ba16ceff109cd1dca0af87.mockapi.io/items?${ 
+  //     categoryId > 0 ? `category=${categoryId}` : ''
+  //   }&sortBy=${sortType}&order=asc`
+  //   )
+  //   .then((res) => {
+  //   return res.json();
+  //   })
+  //   .then((json) => {
+  //     setTimeout(() => {
+  //       setItems(json);
+  //       setIsLoading(false);
+  //     }, 1000);
+  //    });
+  //    window.scrollTo(0,0);
+  //   }, [categoryId,sortType]);
   React.useEffect(() => {
     setIsLoading(true);
-    fetch(`https://62ba16ceff109cd1dca0af87.mockapi.io/items?${ 
-      categoryId > 0 ? `category=${categoryId}` : ''
-    }&sortBy=${sortType}&order=asc`
-    )
-    .then((res) => {
-    return res.json();
-    })
-    .then((json) => {
-      setTimeout(() => {
-        setItems(json);
-        setIsLoading(false);
-      }, 1000);
-     });
-     window.scrollTo(0,0);
-    }, [categoryId,sortType]);
+    axios.get(`https://62ba16ceff109cd1dca0af87.mockapi.io/items?${ 
+        categoryId > 0 ? `category=${categoryId}` : ''  }&sortBy=${sortType}&order=asc`)
+        .then((res) => {
+          setItems(res.data);
+          setIsLoading(false);
+        });
+  }, [categoryId,sortType]);
+ 
 
     const onChangeInput = (event) => {
       setSearchValue(event.target.value);
@@ -72,14 +89,14 @@ const Home = () => {
         className="search" 
         value={searchValue} 
         type="text"
-        
+        ref={inputRef}
         /> 
         {
         searchValue &&
         <img className="search__close" src="./img/close.svg" 
         width={20} 
         height={20}
-        onClick={() => setSearchValue('')}
+        onClick={onClickClear}
          /> 
          }
         </div>
