@@ -1,27 +1,39 @@
 import React from 'react';
-
+//components
 import Card from "../components/Card";
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import Skeleton from '../components/Skeleton';
+//redux
+import { useSelector , useDispatch} from 'react-redux';
+import { setCategoryId } from '../redux/slices/filter';
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const categoryId = useSelector((state) => state.filter.categoryId);
+  const sortType = useSelector((state) => state.filter.sort.sorting);
+
+  const onChangeCategory = (id) => {
+    dispatch(setCategoryId(id));
+  };
+
+
+
   const [searchValue, setSearchValue] = React.useState('');
   const [items,setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [categoryId, setCategoryId] = React.useState(0);
-  const [sortType, setSortType] = React.useState({
-    name: 'алфавиту',
-    sorting: 'name',
-  });
+  
+  // const [sortType, setSortType] = React.useState({
+  //   name: 'алфавиту',
+  //   sorting: 'name',
+  // });
 
-  console.log(categoryId,sortType)
-
+ 
   React.useEffect(() => {
     setIsLoading(true);
     fetch(`https://62ba16ceff109cd1dca0af87.mockapi.io/items?${ 
       categoryId > 0 ? `category=${categoryId}` : ''
-    }&sortBy=${sortType.sorting}&order=asc`
+    }&sortBy=${sortType}&order=asc`
     )
     .then((res) => {
     return res.json();
@@ -43,13 +55,14 @@ const Home = () => {
     <div>
        <div className="categAndSort">
        <Categories value={categoryId} 
-                   onClickCategory={(id) => setCategoryId(id)}
+                   onClickCategory={onChangeCategory}
        />
         {/* <div className="header__switch">
           <div  id="header__switch-circle"></div>
          </div> */}
-        <Sort value={sortType} 
-              onChangeSort={(id) => setSortType(id)} />
+        <Sort 
+        // value={sortType} onChangeSort={(id) => setSortType(id)} 
+        />
       </div>
       <h2 className="content__title">Все модели</h2>
       <div className="search__cont">
