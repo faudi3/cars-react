@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Cart from './pages/Cart';
+import Clock from './components/Clock';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/cart" element={<Cart />}/>
         <Route path="*" element={<NotFound />}/>
       </Routes>
+      <Clock />
     </div>
   );
 }

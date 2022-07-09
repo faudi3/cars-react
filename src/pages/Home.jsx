@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 //components
 import Card from "../components/Card";
 import Categories from '../components/Categories';
@@ -7,10 +8,12 @@ import Skeleton from '../components/Skeleton';
 //redux
 import { useSelector , useDispatch} from 'react-redux';
 import { setCategoryId } from '../redux/slices/filter';
-//axios
+//axios 
 import axios from "axios";
 
+
 const Home = () => {
+
   const dispatch = useDispatch();
   const categoryId = useSelector((state) => state.filter.categoryId);
   const sortType = useSelector((state) => state.filter.sort.sorting);
@@ -30,6 +33,8 @@ const Home = () => {
   const [items,setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   
+ 
+
   // const [sortType, setSortType] = React.useState({
   //   name: 'алфавиту',
   //   sorting: 'name',
@@ -63,6 +68,9 @@ const Home = () => {
         });
   }, [categoryId,sortType]);
  
+  
+
+
 
     const onChangeInput = (event) => {
       setSearchValue(event.target.value);
